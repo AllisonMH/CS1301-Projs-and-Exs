@@ -1,0 +1,101 @@
+/*
+ * This program is a redux of the original pizza order program written over 3 years ago.
+ * We will simplify some of the code using methods for user input, calculations and decision making 
+ * structures 
+ */
+
+import java.util.*;
+import java.text.DecimalFormat;
+public class PO2 {
+
+	
+	
+	public static void main(String[] args) {
+		
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter a name: ");
+		String n = kb.next(); 
+		discount(n);
+		System.out.println("Please select a pizza size of 10, 12, 14, or 16: ");
+		int pizzaSize = kb.nextInt();
+		
+		DecimalFormat df = new DecimalFormat ("#.00");
+		double price  = toppings() +pizzaSize(pizzaSize) ;
+		double tax = price * 0.07;
+		double totalprice = price + tax;
+		if(discount(n) == true)
+		{
+			totalprice = totalprice-2.0;
+		}
+		
+		System.out.print("Subtotal of pie size " + pizzaSize +" with crust type " + crustType() +" is " + price + "\n" 
+		+ "Tax is " + df.format(tax) +"\n" 
+		+ "Grand total " +  df.format(totalprice));
+	}
+	
+	public static boolean discount(String name)
+	{
+		boolean discount = false;
+		if(name.equalsIgnoreCase("Diane") || name.equalsIgnoreCase("Mike"))
+		{
+			discount = true; 
+		}
+		return discount;
+	}
+	 
+	public static double pizzaSize(int pS)
+	{
+		double basePrice =0.0; 
+		switch(pS)
+		{   case 10:
+			   basePrice += 10.99;
+			   break; 
+		case 12:
+			basePrice += 12.99; 
+			break; 
+		case 14:
+			basePrice += 12.99; 
+			break; 
+		case 16:
+			basePrice += 16.99;
+			break;
+			
+		default:
+			basePrice += 10.99;
+		}	
+		return basePrice;
+	}
+	
+	// new crust method: 
+	public static String crustType()
+	{
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Please select a crust type of either Deep Dish, Hand Tossed, or Thin"); 
+		String c = kb.nextLine();
+		return c; 
+	}
+
+	public static double toppings()
+{
+		Scanner kb = new Scanner(System.in); 
+		System.out.println("Please toppings for the pizza. All toppings are 2.99 each\n" + "Toppings available are pepperoni, onion, mushroom, and sausage");
+		
+		String t = kb.nextLine();
+		// have to do a split;
+		String[] toppings = t.split(" ");
+				
+				 
+		for(int k = 0; k < toppings.length; k++)
+		{
+			System.out.println(toppings[k] + " & ");
+		}
+	double tprice = 0.0; 
+		for(int i = 0; i < toppings.length; i++)
+		{
+			tprice += 2.99;
+		}
+		
+		return (tprice);
+}	
+}
+ 
