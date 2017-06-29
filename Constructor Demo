@@ -1,0 +1,40 @@
+// Demonstrating all methods in rectangle constructor class using three different rectangles
+public class ConstructorDemo {
+
+	public static void main(String[] args)
+	{
+		RectangleConstructor box = new RectangleConstructor( 5.0, 15.0);
+		
+		RectangleConstructor box2 = new RectangleConstructor(6.0, 13.0);
+		
+		RectangleConstructor box3 = new RectangleConstructor(7.0, 14.5);
+		
+		System.out.println();
+		//To Print the length of each of the rectangles
+		
+		System.out.println ("Box 1's length is "+ box.getLength());
+		
+		System.out.println("Box 2's length is " + box2.getLength());
+		
+		System.out.println("Box 3's length is " + box3.getLength());
+		
+		System.out.println();
+		
+		//To print the length of each of the rectangles
+		System.out.println("Box 1's width is " + box.getWidth());
+		
+		System.out.println("Box 2's width is " + box2.getWidth());
+		
+		System.out.println("Box 3's width is " + box3.getWidth());
+		
+		System.out.println();
+		//To print the area of each box
+		
+		System.out.println("Box 1's area is "+ box.getArea());
+		
+		System.out.println("Box 2's area is " + box2.getArea());
+		
+		System.out.println("Box 3's area is " + box3.getArea());
+	}
+
+}
