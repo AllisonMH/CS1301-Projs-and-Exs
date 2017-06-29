@@ -1,0 +1,47 @@
+/*constructor class on which length demo, constructor demo, and rectangle demo is based
+ */
+public class RectangleConstructor 
+{
+	private double length;
+	private double width;
+	
+	/**
+	 * The setLength method stores a value in the length field.
+	 * @param len The value to store in length.
+	 * 
+	 */
+	//method to construct rectangle 
+	public RectangleConstructor( double len, double w)
+	{
+		length = len;
+		width = w;
+	}
+	//method for setting the length of a rectangle 
+	public void setLength(double len)
+	{
+		length = len;
+	}
+	//method for setting width of rectangle 
+	public void setWidth(double w)
+	{
+		width = w;
+	}
+	
+	//method for getting length of rectangle 
+	
+	public double getLength() 
+	{
+		return length;
+	}
+	//method for getting width of rectangle 
+	
+	public double getWidth()
+	{
+		return width;
+	}
+	//method for getting area of rectangle 
+	public double getArea()
+	{
+		return length * width;
+	}
+}
