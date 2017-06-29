@@ -1,0 +1,24 @@
+// demo of methods within rectangle constructor
+public class RectangleDemo {
+
+	public static void main(String[] args) {
+		
+		RectangleConstructor box = new RectangleConstructor(5.0,6.5);
+		
+		
+		/*
+		 * Purposely changing the parameters of new box to show how the methods of
+		 * the super class Rectangle can supersede methods of a sub class
+		 */
+		box.setLength(10.0);
+		box.setWidth(20.0);
+		
+		System.out.println("The box's length is " + box.getLength());
+		
+		System.out.println("The box's width is " + box.getWidth());
+		
+		System.out.println("The box's area is " + box.getArea());
+
+	}
+
+}
