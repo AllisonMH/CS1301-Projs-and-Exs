@@ -1,0 +1,75 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Stack; 
+import java.util.Iterator;
+public class RPN_Postfix_Calc {
+	public static void main (String args[])
+	{
+		Scanner keyboard = new Scanner (System.in);
+
+		System.out.println("Enter string for calculation: "); 
+
+		String input = keyboard.nextLine();
+
+	
+		
+//split input string according to delimiters and spaces
+String [ ] exp = input.split(" ");
+
+// add string to arraylist for easy manipulation 
+ArrayList<String> pList = new ArrayList<String>();
+for(int i = 0; i < exp.length; i ++)
+{
+	pList.add(exp[i]);
+}
+//create stack to hold the operands and operators 
+Stack<String>tempStack = new Stack<String>();
+
+//use an iterator to  go through the array list and check each character as an operand or operator and push on to stack accordingly
+Iterator<String> itr = pList.iterator();
+
+while(itr.hasNext())
+{	String c = itr.next();
+	if(c.matches("[0-9]*"))
+	{  //automatically push numeric operators to stack 
+		tempStack.push(c);
+	}  
+	
+	else if(c.matches("[*-/+]"))
+	{ // but when an operator is found, pop off the two operands preceding it, perform operation, and push result back to stack 
+		if(c.equals("*"))
+		{
+			int r = Integer.parseInt(tempStack.pop());
+			int l = Integer.parseInt(tempStack.pop());
+			int res = l*r;
+			tempStack.push(""+res);
+		} else if(c.equals("-"))
+		{
+			int r = Integer.parseInt(tempStack.pop());
+			int l = Integer.parseInt(tempStack.pop());
+			int res = l-r;
+			tempStack.push(""+res);
+		} else if (c.equals("/"))
+		{
+			int r = Integer.parseInt(tempStack.pop());
+			int l = Integer.parseInt(tempStack.pop());
+			int res = l/r;
+			tempStack.push(""+res);
+		}
+else if(c.equals("+"))
+		{
+			int r = Integer.parseInt(tempStack.pop());
+			int l = Integer.parseInt(tempStack.pop());
+			int res = l+r;
+			tempStack.push(""+res);
+		}
+	
+		System.out.println("Closer still");
+	}
+} 
+
+// final pop off of stack is the result of all of the operations
+System.out.println(tempStack.pop());
+}
+}
